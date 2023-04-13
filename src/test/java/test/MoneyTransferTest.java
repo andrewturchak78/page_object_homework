@@ -14,8 +14,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MoneyTransferTest {
     DashboardPage dashboardPage;
+
     @BeforeEach
-    void setup(){
+    void setup() {
         open("http://localhost:9999");
         var loginPage = new LoginPage();
         var authInfo = DataHelper.getAuthInfo();
@@ -24,6 +25,7 @@ public class MoneyTransferTest {
         dashboardPage = verificationPage.validVerify(verificationCode);
 
     }
+
     @Test
     void shouldTransferMoneyBetweenOwnCards() {
         var firstCardInfo = getFirstCardInfo();
@@ -40,8 +42,9 @@ public class MoneyTransferTest {
         assertEquals(expectedBalanceFirstCard, finalBalanceFirstCard);
         assertEquals(expectedBalanceSecondCard, finalBalanceSecondCard);
     }
+
     @Test
-    void shouldCatchErrorMessage(){
+    void shouldCatchErrorMessage() {
         var firstCardInfo = getFirstCardInfo();
         var secondCardInfo = getSecondCardInfo();
         var firstCardBalance = dashboardPage.getCardBalance(firstCardInfo);

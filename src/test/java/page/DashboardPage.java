@@ -24,16 +24,18 @@ public class DashboardPage {
         heading.shouldBe(visible);
     }
 
-     public int getCardBalance(DataHelper.CardInfo info) {
-       val text = cards.find(text(info.getCardNumber().substring(15))).getText();
+    public int getCardBalance(DataHelper.CardInfo info) {
+        val text = cards.find(text(info.getCardNumber().substring(15))).getText();
         // TODO: перебрать все карты и найти по атрибуту data-test-id
         return extractBalance(text);
-     }
+    }
+
     public MoneyTransferPage selectCardToTransfer(DataHelper.CardInfo cardInfo) {
         cards.find(text(cardInfo.getCardNumber().substring(15))).$("button").click();
         return new MoneyTransferPage();
     }
-    public DashboardPage reloadButton(){
+
+    public DashboardPage reloadButton() {
         $("[data-test-id=action-reload]").click();
         return new DashboardPage();
     }
